@@ -1,20 +1,19 @@
 using Soenneker.Cohere.HttpClients.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Cohere.HttpClients.Tests;
 
-[Collection("Collection")]
-public sealed class CohereOpenApiHttpClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class CohereOpenApiHttpClientTests : HostedUnitTest
 {
     private readonly ICohereOpenApiHttpClient _httpclient;
 
-    public CohereOpenApiHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public CohereOpenApiHttpClientTests(Host host) : base(host)
     {
         _httpclient = Resolve<ICohereOpenApiHttpClient>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
