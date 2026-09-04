@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Cohere.HttpClients;
 
+/// <inheritdoc cref="ICohereOpenApiHttpClient" />
 public sealed class CohereOpenApiHttpClient : ICohereOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
