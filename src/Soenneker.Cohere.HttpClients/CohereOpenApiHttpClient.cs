@@ -30,7 +30,7 @@ public sealed class CohereOpenApiHttpClient : ICohereOpenApiHttpClient
     {
         return _httpClientCache.Get(_cacheKey, (config: _config, baseUrl: _config["Cohere:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Cohere:ApiKey");
+            var apiKey = state.config.GetStringStrict("Cohere:ApiKey");
             string authHeaderName = state.config["Cohere:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Cohere:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
